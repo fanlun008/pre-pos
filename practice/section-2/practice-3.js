@@ -7,10 +7,9 @@ function countSameElements(collection) {
     var reg = /[a-z]+[-|:][\d]/
     var reg2 = /[a-z]+\[[\d]+\]/
     if (reg.test(value)) {
-      console.log(value + "is a ---")
       var splitVlue = value.split(/[-|:]/);
       console.log(splitVlue[0], splitVlue[1])
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < splitVlue[1]; i++) {
         if (same[splitVlue[0]] == undefined) {
           same[splitVlue[0]] = 1;
         } else {
@@ -18,10 +17,19 @@ function countSameElements(collection) {
         }
       }
     } else if (reg2.test(value)) {
-      console.log(value + "is [][][][][][]");
-      let reg3 = /[a-z]\[$/
-      let firstValue = value.match(reg3)
-      console.log("first Value: " + firstValue)
+      let reg3 = /[a-z]+/
+      let reg4 = /\d+/
+      let firstValue = value.match(reg3);
+      let secondValue = value.match(reg4)
+      console.log("second Value: " + secondValue + ", first: " + firstValue)
+      for(let i = 0; i< secondValue; i++) {
+        if (same[firstValue] == undefined) {
+          same[firstValue] = 1;
+        }else {
+          same[firstValue]++;
+        }
+      }
+      
     } else {
       if (same[value] == undefined) {
         same[value] = 1;
@@ -36,8 +44,8 @@ function countSameElements(collection) {
   var totalCount = [];
   for (var item in same) {
     let one = {
-      key: item,
-      count: same[item]
+      name: item,
+      summary: same[item]
     }
     totalCount.push(one);
   }

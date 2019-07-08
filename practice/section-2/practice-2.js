@@ -5,19 +5,19 @@ function countSameElements(collection) {
 
   collection.forEach((value, index, array) => {
     var reg = /[a-z]+-[\d]/
-    if(reg.test(value)) {
+    if (reg.test(value)) {
       console.log(value + "is a ---")
       var splitVlue = value.split("-");
-      console.log(splitVlue[0],splitVlue[1])
-      for(let i = 0;i<5;i++) {
-        if(same[splitVlue[0]] == undefined) {
+      console.log(splitVlue[0], splitVlue[1])
+      for (let i = 0; i < splitVlue[1]; i++) {
+        if (same[splitVlue[0]] == undefined) {
           same[splitVlue[0]] = 1;
-        }else {
+        } else {
           same[splitVlue[0]]++;
         }
       }
     } else {
-      if(same[value] == undefined) {
+      if (same[value] == undefined) {
         same[value] = 1;
       } else {
         same[value]++;
