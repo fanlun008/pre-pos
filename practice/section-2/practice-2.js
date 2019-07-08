@@ -1,19 +1,27 @@
 'use strict';
 
 function countSameElements(collection) {
-  var same = [];
+  var same = new Array();
 
   collection.forEach((value, index, array) => {
     var reg = /[a-z]+-[\d]/
     if(reg.test(value)) {
       console.log(value + "is a ---")
-      
-    }
-
-    if(same[value] == undefined) {
-      same[value] = 1;
+      var splitVlue = value.split("-");
+      console.log(splitVlue[0],splitVlue[1])
+      for(let i = 0;i<5;i++) {
+        if(same[splitVlue[0]] == undefined) {
+          same[splitVlue[0]] = 1;
+        }else {
+          same[splitVlue[0]]++;
+        }
+      }
     } else {
-      same[value]++;
+      if(same[value] == undefined) {
+        same[value] = 1;
+      } else {
+        same[value]++;
+      }
     }
   })
 
